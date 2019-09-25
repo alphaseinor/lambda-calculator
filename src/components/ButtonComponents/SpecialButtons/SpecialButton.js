@@ -4,7 +4,7 @@ export const SpecialButton = (props) => {
   console.log(props)
   return (
     <button 
-      className="special_button"
+      className="row_one button"
       key={props.id}
       value={props.special}
     >
