@@ -65,9 +65,19 @@
     margin: .4vw;
     border-radius: 4vw;
     font-size: 4vw;
+    background-color: #0acece;
+    color: #d8dac3;
 }
 
 .zero {
     width:18.8vw;
+}
+
+.med_color {
+    background-color:  #0a90ce;
+}
+
+.dk_color {
+    background-color: #2e3c8a;
 }
 

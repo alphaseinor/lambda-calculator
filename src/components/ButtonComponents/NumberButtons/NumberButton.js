@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const NumberButton = props => {
-  const cNValue = props.number == 0? `zero button` : `row_one button`
+  const cNValue = props.number == 0? `zero button dk_color` : `row_one button dk_color`
 
 
   return (
