@@ -1,33 +1,33 @@
 .container {
     background-color: #c01045;
-    width: 33vw;
+    width: 40vw;
     max-width: 550px;
     border-radius: 15px;
     border: 2px solid grey;
-    padding: 25px;
+    padding: 2.5vw;
 }
 .display {
-    margin-top: 25px;
-    height: 100px;
+    margin-top: 2.5vw;
+    height: 10vw;
     width: auto;
-    border-radius: 50px;
+    border-radius: 5vw;
     color: white;
     background-color: #322c2d;
-    box-shadow: 1px 1px #322c2d;
+    box-shadow: .1vw .1vw #322c2d;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     align-content: center;
-    padding-right: 8%;
-    font-size: 3.0rem;
+    padding-right: 2.5vw;
+    font-size: 5vw;
 }
 
 .logo {
-    width: 20%;
+    width: 8vw;
 }
 
 .Display {
-    padding-bottom: 25px;
+    padding-bottom: 2.5vw;
 }
 
 .flex {
@@ -36,11 +36,11 @@
 }
 
 .one {
-    width: 25%;
+    width: 8.75vw;
 }
 
 .three{
-    width:75%;
+    width:30vw;
 }
 
 .row {
@@ -55,20 +55,19 @@
     flex-wrap: wrap;
 }
 
-.right{
-    
-}
-
-.row_one {
-    width:30%;
-}
-
-.zero {
-    width:66%;
+.height{
+    height: 45vw;
 }
 
 .button {
-    height: 5rem;
-    border-radius: 2.5rem;
-    font-size: 2.5rem;
+    height: 8vw;
+    width: 8vw;
+    margin: .4vw;
+    border-radius: 4vw;
+    font-size: 4vw;
 }
+
+.zero {
+    width:18.8vw;
+}
+

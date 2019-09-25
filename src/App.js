@@ -25,7 +25,7 @@ function App() {
         <div className="Display">
           <Display />
         </div>
-        <div className="flex row">
+        <div className="flex row height">
           <div className="flex wrap three">
             <Specials />
             <Numbers />
