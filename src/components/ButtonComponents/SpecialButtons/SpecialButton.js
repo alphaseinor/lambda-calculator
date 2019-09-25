@@ -1,7 +1,6 @@
 import React from "react";
 
 export const SpecialButton = (props) => {
-  console.log(props)
   return (
     <button 
       className="row_one button med_color"

@@ -2,7 +2,7 @@
     background-color: #c01045;
     width: 40vw;
     max-width: 550px;
-    border-radius: 15px;
+    border-radius: 2.5vw;
     border: 2px solid grey;
     padding: 2.5vw;
 }
@@ -56,7 +56,7 @@
 }
 
 .height{
-    height: 45vw;
+    height: 44vw;
 }
 
 .button {
@@ -64,7 +64,7 @@
     width: 8vw;
     margin: .4vw;
     border-radius: 4vw;
-    font-size: 4vw;
+    font-size: 3.5vw;
     background-color: #0acece;
     color: #d8dac3;
 }
