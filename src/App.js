@@ -33,14 +33,14 @@ function App() {
         //do nothing, this is the first time through
         console.log(`don't hit = yet`)
       }else{
+        //copy disp state to dispMem
+        dispMemState(disp)
         //set the operator
         opState(operator)   
         //reset display
         dispState('0')
         //reset decimal
         decimalState(false)
-        //copy disp state to dispMem
-        dispMemState(disp)
       }
     }else{
       console.log('second')
@@ -52,7 +52,14 @@ function App() {
         opState('')
         decimalState(false)
       }else{
-
+        dispMemState(`${mathsAreFun[op](parseFloat(dispMem), parseFloat(disp))}`)
+        //set the operator
+        opState(operator)   
+        //reset display
+        dispState('0')
+        //reset decimal
+        decimalState(false)
+        //copy disp state to dispMem
       }
     }
   }
