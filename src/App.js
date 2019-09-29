@@ -15,23 +15,27 @@ function App() {
 
   function ops (x) {
     let operator = x.target.value;
-    console.log(`dispMem: ${dispMem} disp: ${disp}, operator: ${op}, decimal: ${decimal}`)
-    console.log(operator);
+    console.log(`x: ${operator} dispMem: ${dispMem} disp: ${disp}, operator: ${op}, decimal: ${decimal}`);
+
     //is this the 1st or nth time op was pushed?
     if(op === ''){
       //first time op is pushed
       //Set op to operator
-      opState(operator)   
-      //copy disp to dispMem
-      dispMemState(disp)
-      //reset display
-      dispState('0')
-      //reset decimal
-      decimalState(false)
-
-      
+      if(operator === '=' ){
+        //do nothing, this is the first time through
+        console.log(`don't hit = yet`)
+      }else{
+        //set the operator
+        opState(operator)   
+        //copy disp to dispMem
+        dispMemState(disp)
+        //reset display
+        dispState('0')
+        //reset decimal
+        decimalState(false)}
     }else{
       //more than first time op is pushed
+      
       
     }
 
