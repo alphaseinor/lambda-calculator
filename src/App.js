@@ -17,8 +17,16 @@ function App() {
     let operator = x.target.value;
     console.log(`x: ${operator} dispMem: ${dispMem} disp: ${disp}, operator: ${op}, decimal: ${decimal}`);
 
+    const mathsAreFun = {
+      '+': function (x,y){ return x+y},
+      '-': function (x,y) {return x-y},
+      '*': function (x,y) {return x*y},
+      '/': function (x,y) {return x/y}
+    }
+
     //is this the 1st or nth time op was pushed?
     if(op === ''){
+      console.log('first')
       //first time op is pushed
       //Set op to operator
       if(operator === '=' ){
@@ -27,18 +35,26 @@ function App() {
       }else{
         //set the operator
         opState(operator)   
-        //copy disp to dispMem
-        dispMemState(disp)
         //reset display
         dispState('0')
         //reset decimal
-        decimalState(false)}
+        decimalState(false)
+        //copy disp state to dispMem
+        dispMemState(disp)
+      }
     }else{
+      console.log('second')
       //more than first time op is pushed
-      
-      
-    }
+      if(operator === '='){
+        //do the stored operation with disp and dispMem, and dispState the total. 
+        dispState(`${mathsAreFun[op](parseFloat(dispMem), parseFloat(disp))}`)
+        dispMemState('')
+        opState('')
+        decimalState(false)
+      }else{
 
+      }
+    }
   }
 
   function nums (x) { //stores numbers into display
