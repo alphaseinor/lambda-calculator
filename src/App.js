@@ -8,11 +8,17 @@ import {Display} from './components/DisplayComponents/Display.js'
 import Logo from './components/DisplayComponents/Logo';
 
 function App() {
-  const [disp, dispState] = useState('0')
-  const [decimal, decimalState] = useState(false)
+  const [disp, dispState] = useState('0') //display for calculator
+  const [decimal, decimalState] = useState(false) //decimal is only used once
+  const [dispMem, dispMemState] = useState('') //memory for when an operator is pushed
+  const [op, opState] =useState('') //stores the current operator
 
+  function ops (x) {
+    let operator = x.target.value;
+    console.log(operator);
+  }
 
-  function num (x) {
+  function nums (x) { //stores numbers into display
     let digit = x.target.value;
     //console.log(digit);
     if(decimal === false){
@@ -43,10 +49,12 @@ function App() {
 
             />
             <Numbers 
-            num={num} />
+            num={nums} />
           </div>
           <div className="flex wrap column one">
-            <Operators />
+            <Operators 
+              op={ops}
+            />
           </div>
         </div>
       </div>
