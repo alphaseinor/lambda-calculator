@@ -9,11 +9,23 @@ import Logo from './components/DisplayComponents/Logo';
 
 function App() {
   const [disp, dispState] = useState('0')
+  const [decimal, decimalState] = useState(false)
+
 
   function num (x) {
     let digit = x.target.value;
-    console.log(digit);
-    dispState(disp === '0' ? digit : disp + digit)
+    //console.log(digit);
+    if(decimal === false){
+      if(digit === '.'){ 
+        //if the digit is a '.' then prevent more '.' from being added to the display in future key presses. 
+        decimalState(true)
+      }
+      //update state for display without conditions
+      dispState(disp === '0' ? digit : disp + digit)
+    }else{
+      //decimal has been pressed... no more decimals allowed, also don't need to check for a leading 0 because it cannot be 0.
+      digit === '.' ? dispState(disp) : dispState(disp + digit)
+    }
   }
 
   return (
