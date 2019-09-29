@@ -12,6 +12,13 @@ function App() {
   const [decimal, decimalState] = useState(false) //decimal is only used once
   const [dispMem, dispMemState] = useState('') //memory for when an operator is pushed
   const [op, opState] =useState('') //stores the current operator
+  const [spec, specialState] = useState('');
+
+  function special (x){
+    let special = x.target.value; 
+    console.log(special)
+  }
+
 
   function ops (x) {
     let operator = x.target.value;
@@ -59,7 +66,6 @@ function App() {
         dispState('0')
         //reset decimal
         decimalState(false)
-        //copy disp state to dispMem
       }
     }
   }
@@ -92,7 +98,7 @@ function App() {
         <div className="flex row height">
           <div className="flex wrap three">
             <Specials 
-
+              specials={special}
             />
             <Numbers 
             num={nums} />
