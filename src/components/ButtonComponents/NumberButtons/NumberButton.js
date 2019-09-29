@@ -5,9 +5,13 @@ export const NumberButton = props => {
 
 
   return (
-    <button className={classNameValue} key={props.id}>
+    <button 
+      className={classNameValue} 
+      key={props.id} 
+      onClick={props.num}
+      value={props.number}
+    >
       {props.number}
-      {/* Display a button element rendering the data being passed down from the parent container on props */}
     </button>
   );
 };
