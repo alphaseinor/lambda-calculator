@@ -1,25 +1,117 @@
-import React from "react";
-import "./App.css";
-// STEP 4 - import the button and display components
-// Don't forget to import any extra css/scss files you build into the correct component
+import React, {useState} from 'react';
+import './App.css';
+import { Numbers } from './components/ButtonComponents/NumberButtons/Numbers';
+import {Operators} from './components/ButtonComponents/OperatorButtons/Operators'
+import {Specials} from './components/ButtonComponents/SpecialButtons/Specials'
+import {Display} from './components/DisplayComponents/Display.js'
 
-// Logo has already been provided for you. Do the same for the remaining components
-import Logo from "./components/DisplayComponents/Logo";
+import Logo from './components/DisplayComponents/Logo';
 
 function App() {
-  // STEP 5 - After you get the components displaying using the provided data file, write your state hooks here.
-  // Once the state hooks are in place write some functions to hold data in state and update that data depending on what it needs to be doing
-  // Your functions should accept a parameter of the the item data being displayed to the DOM (ie - should recieve 5 if the user clicks on
-  // the "5" button, or the operator if they click one of those buttons) and then call your setter function to update state.
-  // Don't forget to pass the functions (and any additional data needed) to the components as props
+  const [disp, dispState] = useState('0') //display for calculator
+  const [decimal, decimalState] = useState(false) //decimal is only used once
+  const [dispMem, dispMemState] = useState('') //memory for when an operator is pushed
+  const [op, opState] =useState('') //stores the current operator
+  const [spec, specialState] = useState('');
+
+  function special (x){
+    let special = x.target.value; 
+    console.log(special)
+  }
+
+
+  function ops (x) {
+    let operator = x.target.value;
+    console.log(`x: ${operator} dispMem: ${dispMem} disp: ${disp}, operator: ${op}, decimal: ${decimal}`);
+
+    const mathsAreFun = {
+      '+': function (x,y){ return x+y},
+      '-': function (x,y) {return x-y},
+      '*': function (x,y) {return x*y},
+      '/': function (x,y) {return x/y}
+    }
+
+    //is this the 1st or nth time op was pushed?
+    if(op === ''){
+      console.log('first')
+      //first time op is pushed
+      //Set op to operator
+      if(operator === '=' ){
+        //do nothing, this is the first time through
+        console.log(`don't hit = yet`)
+      }else{
+        //copy disp state to dispMem
+        dispMemState(disp)
+        //set the operator
+        opState(operator)   
+        //reset display
+        dispState('0')
+        //reset decimal
+        decimalState(false)
+      }
+    }else{
+      console.log('second')
+      //more than first time op is pushed
+      if(operator === '='){
+        //do the stored operation with disp and dispMem, and dispState the total. 
+        dispState(`${mathsAreFun[op](parseFloat(dispMem), parseFloat(disp))}`)
+        dispMemState('')
+        opState('')
+        decimalState(false)
+      }else{
+        dispMemState(`${mathsAreFun[op](parseFloat(dispMem), parseFloat(disp))}`)
+        //set the operator
+        opState(operator)   
+        //reset display
+        dispState('0')
+        //reset decimal
+        decimalState(false)
+      }
+    }
+  }
+
+  function nums (x) { //stores numbers into display
+    let digit = x.target.value;
+    //console.log(digit);
+    if(decimal === false){
+      if(digit === '.'){ 
+        //if the digit is a '.' then prevent more '.' from being added to the display in future key presses. 
+        decimalState(true)
+      }
+      //update state for display without conditions
+      dispState(disp === '0' ? digit : disp + digit)
+    }else{
+      //decimal has been pressed... no more decimals allowed, also don't need to check for a leading 0 because it cannot be 0.
+      digit === '.' ? dispState(disp) : dispState(disp + digit)
+    }
+  }
 
   return (
     <div className="container">
       <Logo />
       <div className="App">
-        {/* STEP 4 - Render your components here and be sure to properly import/export all files */}
+        <div className="Display">
+          <Display
+            display={disp}
+          />
+        </div>
+        <div className="flex row height">
+          <div className="flex wrap three">
+            <Specials 
+              specials={special}
+            />
+            <Numbers 
+            num={nums} />
+          </div>
+          <div className="flex wrap column one">
+            <Operators 
+              op={ops}
+            />
+          </div>
+        </div>
       </div>
     </div>
+    
   );
 }
 

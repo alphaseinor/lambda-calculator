@@ -1,9 +1,17 @@
-import React from "react";
+import React from 'react';
 
-const NumberButton = () => {
+export const NumberButton = props => {
+  const classNameValue = props.number === '0'? `zero button dk_color` : `row_one button dk_color`
+
+
   return (
-    <>
-      {/* Display a button element rendering the data being passed down from the parent container on props */}
-    </>
+    <button 
+      className={classNameValue} 
+      key={props.id} 
+      onClick={props.num}
+      value={props.number}
+    >
+      {props.number}
+    </button>
   );
 };
